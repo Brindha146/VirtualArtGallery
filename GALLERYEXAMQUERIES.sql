@@ -184,7 +184,7 @@ GROUP BY a.Name
 HAVING COUNT(aw.CategoryID)=3;
 
 --13.  List the total number of artworks in each category. 
-SELECT c.Name, COUNT(a.ArtworkID) AS ArtworkCount
+SELECT c.Name as CategoryName, COUNT(a.ArtworkID) AS ArtworkCount
 FROM Categories c
 LEFT JOIN Artworks a ON c.CategoryID = a.CategoryID
 GROUP BY c.Name;
@@ -224,7 +224,7 @@ LEFT JOIN ExhibitionArtworks e ON e.ArtworkID=a.ArtworkID
 WHERE e.ArtworkID IS NULL;
 
 --19. Show artists who have artworks in the same category as "Mona Lisa." 
-SELECT a.Name
+SELECT a.Name, aw.Title
 FROM Artists a
 LEFT JOIN Artworks aw ON a.ArtistID=aw.ArtistID
 LEft JOIN Categories c ON aw.CategoryID=c. CategoryID

@@ -1,6 +1,9 @@
 --Coding Challenge SQL 
 --Virtual Art Gallery Shema DDL and DML
 
+--Create Database
+CREATE DATABASE VisualArtGallery;
+
 -- Create the Artists table 
 CREATE TABLE Artists ( 
 ArtistID INT PRIMARY KEY, 
@@ -181,7 +184,7 @@ FROM Artists a
 JOIN Artworks aw ON a.ArtistID=aw.ArtistID
 JOIN Categories c ON c.CategoryID=aw.CategoryID
 GROUP BY a.Name
-HAVING COUNT(aw.CategoryID)=3;
+HAVING COUNT(aw.CategoryID) = (SELECT COUNT(CategoryID) FROM Categories);
 
 --13.  List the total number of artworks in each category. 
 SELECT c.Name as CategoryName, COUNT(a.ArtworkID) AS ArtworkCount
